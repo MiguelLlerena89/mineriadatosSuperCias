@@ -1,0 +1,45 @@
+#Presentación de información estadística
+
+
+summary(Balances_empresas_2019$Activocorriente)
+
+summary(Balances_empresas_2019$Activonocorriente)
+
+summary(Balances_empresas_2019$Totalactivo)
+
+summary(Balances_empresas_2019$Pasivocorriente)
+
+summary(Balances_empresas_2019$Pasivonocorriente)
+
+summary(Balances_empresas_2019$Totalpasivo)
+
+
+#	Presentación de gráficos, Instalar: ggplot, dplyr
+
+
+install.packages (“ggplot2”)
+install.packages (“dplyr”)
+library (ggplot2)
+library (dplyr)
+
+#	Para gráficos de barras con porcentaje
+
+
+> tamaño <- Balances_empresas_2019 %>%
+  + group_by(TAMAÑO) %>%
+  + count ()sas_2019, aes(Totalactivo,TAMAÑO))
+> grafica1+ geom_col (fill="red") %>%
+  + ungroup () %>%
+  + mutate (sumatoria =`n`/sum(`n`)*100)
+
+
+
+ggplot(tamaño, aes(x=TAMAÑO, y=sumatoria, fill=TAMAÑO))+ geom_bar(stat = "identity", position= "dodge")+geom_text(aes(label=paste0(round(sumatoria,1), "%")), color = "white", vjust= 1.5) + theme_bw ()
+
+
+
+#	Para gráficos de barras con cruce de variables
+
+grafica1 = ggplot(Balances_empre
+
+
